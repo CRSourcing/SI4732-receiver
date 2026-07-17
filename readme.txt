@@ -1,7 +1,6 @@
 
 Firmware for SI473x receivers with ESP32 and ILI9341 display driver. Works on hardware based on the "common" schematic that has been published several times. An example schematic 
-can be found in the pics folder. The audio feed can be done via a LM386 (see separate schematic), or a singe transistor amplifier with 1.65V at the collector. The LM567 in the example schematic is not needed.  
-
+can be found in the pics folder. The audio feed can be done via a LM386, or a singe transistor amplifier with 1.65V at the collector.
 
 Hints:
 
