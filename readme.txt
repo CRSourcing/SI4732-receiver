@@ -1,5 +1,5 @@
 
-Firmware for SI473x receivers with ESP32 and ILI9341 display driver. Works on hardware based on the "common" schemaic that has been published several times.
+Firmware for SI473x receivers with ESP32 and ILI9341 display driver. Works on hardware based on the "common" schematic that has been published several times.
 
 
 Hints:
