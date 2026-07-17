@@ -1,8 +1,5 @@
 
-/*
-
-
-Firmware for SI473x receivers with ESP32 and ILI9341 display driver
+Firmware for SI473x receivers with ESP32 and ILI9341 display driver. Works on hardware based on the "common" schemaic that has been published several times.
 
 
 Hints:
@@ -16,8 +13,6 @@ Start:
 
 
 Hardware:
-
-
 
 Audio feed into ADC:
 An audio feed into GPIO32 is required for waterfall, decoders and audio dsp:
