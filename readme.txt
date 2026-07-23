@@ -47,6 +47,11 @@ Needs to be read trough a 2/1 resistive divider on GPIO33. Do not exceed 6.6V ba
 
 Software:
 
+
+SI5351 support: Can be enabled in the Config menu. If enabled, the SI5351 will generate a 32768Hz signal on CLK0.
+
+GPO1 dupport: Can also be enabled in the Config menu. If enabled, GPO1 will go HIGH when in AM mode and LOW when in FM mode.
+
 WiFi Sync (in Storage Menu). Use to download station lists from receiver, edit them and re-upload. Also for downloading SSTV image files.
 
 
@@ -77,7 +82,7 @@ Files have consecutive numbering and the oldest file will be overwritten if a ne
 Files can also be downloaded via "WiFi sync".
 
 
-Weatherfax - Under development. Currently only IOC567 format supported.
+Weatherfax - Under development. Currently only IOC567 format supported. Phasing line synchronization is still shaky.
 
 Indicators:
 Press indicators (below S Meter scale) to change their values. Press left or right of the "Step:" indicator on the right to move frequency one step up or down.
