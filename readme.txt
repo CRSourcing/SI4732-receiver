@@ -47,9 +47,19 @@ Needs to be read trough a 2/1 resistive divider on GPIO33. Do not exceed 6.6V ba
 
 Software:
 
+Files on LittleFS (the ESP32 file system): These files can be downloaded via 'WiFi Sync", edited and re-uploaded.
+
+MemoInfo.csv: Holds memory entries 
+eibi.lst: Holds EiBi station list 
+image.img: Holds last downloaded image 
+kiwisdr.url: KiwiServer url's
+memory.csv: Holds station list (PicoRX compatible)
+splash.jpg: Boot image
+sstv123.raw: holds saved SSTV images
+sstv123.bmp: holds saved SSTV images in bmp format
+
 
 SI5351 support: Can be enabled in the Config menu. If enabled, the SI5351 will generate a 32768Hz signal on CLK0.
-
 GPO1 dupport: Can also be enabled in the Config menu. If enabled, GPO1 will go HIGH when in AM mode and LOW when in FM mode.
 
 WiFi Sync (in Storage Menu). Use to download station lists from receiver, edit them and re-upload. Also for downloading SSTV image files.
