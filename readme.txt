@@ -77,12 +77,18 @@ Exit via Freq -> Boot button.
 
 Decoders:
 CW: Best at 500–800 Hz. Align with waterfall red bars.
-RTTY: Align mark/space with waterfall bars. Use encoder for fine tuning.
+RTTY: Align mark/space with waterfall bars. Mark should be set to 500Hz. While decoding use encoder for fine tuning.
 SSTV: Supports Martin & Scottie. Autodetect is based on sync interval and may fail.
+Weatherfax: Experimental. IOC567 format only. Sync unstable.
 
 Save SSTV images to SD card (BMP) or LittleFS (.raw or .bmp).
-Limited storage: ~12 raw or 4 BMP files. Oldest overwritten when full.
-Weatherfax: Experimental. IOC567 format only. Sync unstable.
+Limited storage: ~12 raw or 4 BMP files. Oldest file gets overwritten when full.
+
+
+KiwiSDR: Connects to 1 of 10  selectable KiwiSDR servers on the current frequency/mode. KiwiSDR server URLs can be changed by modifying the file kiwisdr.url.
+For SSB and CW the SI4732 frequency error needs to be zero (Config -> Crystal Offset), otherwise it will cause a frequency offset with the Kiwi server.
+Encoder tuning works, but with a huge delay (10 seconds). 
+
 
 User Interface
 Indicators: Tap indicators below S‑Meter to change values.
