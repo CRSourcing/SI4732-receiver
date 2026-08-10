@@ -23,8 +23,9 @@ Add 5–10 nF capacitor from GPIO32 to GND to reduce aliasing.
 
 2. Audio Feedback (GPIO26, DAC)
 Used for all features that feed digital audio into the audio path. 
-Connect GPIO26 through a 10 nF capacitor + 15 kΩ resistor in series to audio amp input.
-Resistor value sets volume and value may vary.
+Connect GPIO26 through a 10 nF capacitor + resistor in series to audio amp input.
+Resistor value sets volume and value depends on the audio amplifier. Good starting points are 100K for high impedance audio input
+and 10K for low impendace.
 
 3. SD Card
 Connect to SPI bus (shared with display).
