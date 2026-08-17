@@ -96,7 +96,7 @@ Not all will work since this client uses a rather basic implementation of the (u
 To change a server, check http://rx.linkfanel.net/ and http://kiwisdr.com/public/. Try the server first in a browser and
 use a server that does not use cloudflare or similar bot protector.
 For SSB and CW the SI4732 frequency needs to be precisely adjusted (Config -> Crystal Offset), otherwise it will cause a frequency offset with the Kiwi server.
-The encoder can now be used for tuning the client. The first changes will be slow (several seconds) until the internal audio buffer has been adjusted. 
+The client can now be tuned with the encoder. The first changes will be slow (take several seconds) until the internal audio buffer has been adjusted. 
 Later changes will take around 1 second.
 DLY- and DLY+ can be used if the audio drops, or the audio pitch is too high/low. The correct value depends on the individual hardware and should be around 70.
 KiwiSDR may not function on every hardware, the streaming and decoding chain pushes the ES32 to it's limits.   
