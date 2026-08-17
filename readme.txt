@@ -4,13 +4,13 @@ on the "common" schematic for diy SI4732 receivers (example in pics folder).
 ------------------------------------------------------------------------------------------
 
 Getting Started:
-Upload the .bin file to the ESP32.
+Upload the .bin file to the ESP32. 
 Configure display and touchscreen.
 If encoder direction is wrong, adjust in Config menu.
 If SI5351 is used to generate 32768Hz clock, enable in Config menu.
 Configure WiFi:
 Menu → More → Config → WiFi Cred.
-Receiver works offline, but WiFi enables extra features.
+Receiver works offline, but WiFi needed for features.
 
 ------------------------------------------------------------------------------------------
 
@@ -24,7 +24,7 @@ Add 5–10 nF capacitor from GPIO32 to GND to reduce aliasing.
 2. Audio Feedback (GPIO26 to audio input)
 Used for all features that feed digital audio into the audio path. 
 Connect GPIO26 through a 10 nF capacitor + resistor in series to audio amp input.
-Resistor value sets volume and value depends on the audio amplifier. Resistor needs to be figured out. 
+Resistor value sets volume and value depends on the audio amplifier. Resistor value needs to be figured out. 
 Good starting points are 100K for high impedance audio input and 10K for low impedance.
 
 3. SD Card
@@ -37,8 +37,10 @@ CS -> GPIO25
 Keep wiring short (20 MHz bus).
 Not all SD cards are compatible, power cycle  and try another if not recognized.
 
+4. Audio DSP
+Audio DSP reads audio from the ADC and plays it back via the DAC. To avoid mixing "normal" audio and DAC audio, the normal audio must not reach the audio amp input when the DSP is in use. This can be done with the mute transistor and a resistor between the mute transistor and the audio amplifier input, or an audio switch that opens the connection btw the ESP32 audio out and the audio amplifier input.
 
-Battery Voltage indicator 
+5. Battery Voltage indicator 
 Reads via GPIO33 with 2:1 resistive divider.
 Max battery voltage: 6.6 V.
 ------------------------------------------------------------------------------------------
@@ -72,11 +74,10 @@ Push again = exit fine tune.
 WiFi Sync: Syncs browser with the ESP32 file system. Download, edit, re‑upload config files, station lists and SSTV images.
 
 
-
 WiFi interface: Allows to listen remotely. For best sound:
 Adjust receiver volume first (avoid clipping).
 Fine‑tune volume then with WiFi interface slider.
-This feature requires full ESP32 processing power -> other functions may lag.
+This feature requires full ESP32 processing power -> other functions may lag or be unavailable.
 Exit via Freq -> Boot button.
 
 Decoders:
@@ -85,16 +86,20 @@ RTTY: Align mark/space with waterfall bars. Mark should be set to 500Hz. While d
 SSTV: Supports Martin & Scottie. Autodetect is based on sync interval and may fail.
 Weatherfax: Experimental. IOC567 format only. Sync unstable.
 
-Save SSTV images to SD card (BMP) or LittleFS (.raw or .bmp).
+SSTV files:
+Saves SSTV images to SD card (BMP) or LittleFS (.raw or .bmp).
 Limited storage: ~12 raw or 4 BMP files. Oldest file gets overwritten when full.
 
 
 KiwiSDR: Connects to 1 of 10 selectable KiwiSDR servers using the current frequency/mode. KiwiSDR servers can be changed by modifying the config file kiwisdr.url.
+Not all will work since this client uses a rather basic implementation of the (undisclosed) communication protocol between server and client.
+To change a server, check http://rx.linkfanel.net/ and http://kiwisdr.com/public/. Try the server first in a browser and
+use a server that does not use cloudflare or similar bot protector.
 For SSB and CW the SI4732 frequency needs to be precisely adjusted (Config -> Crystal Offset), otherwise it will cause a frequency offset with the Kiwi server.
 The encoder can now be used for tuning the client. The first changes will be slow (several seconds) until the internal audio buffer has been adjusted. 
 Later changes will take around 1 second.
-DLY- and DLY+ can be used if the audio drops, or the audio pitch is too high/low. The correct value depends on the hardware used and should be around 70.
-KiwiSDR may not function on every hardware, the streaming and decoding chain pushes the ES32 to it's limits and will fail if for example WiFi is weak.   
+DLY- and DLY+ can be used if the audio drops, or the audio pitch is too high/low. The correct value depends on the individual hardware and should be around 70.
+KiwiSDR may not function on every hardware, the streaming and decoding chain pushes the ES32 to it's limits.   
 
 Internet radio: Experimental. Servers can be changed by modifying the config file iradio.url. Currently only mp3 encoding is supported. Faster streams (>192Kbit)
 will most likely stutter.
