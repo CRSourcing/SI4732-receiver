@@ -1,5 +1,6 @@
-This firmware is designed for SI473x + ESP32 + ILI9341 receivers. The hardware is based
-on the "common" schematic for diy SI4732 receivers (example in pics folder).
+This firmware is designed for SI473x + ESP32 + ILI9341 receivers. It works on hardware based
+on the "common" schematic for diy SI4732 receivers (example in pics folder). 
+It also works on some versions of the ATS25 receiver, but does not support "Air" versions.
 
 ------------------------------------------------------------------------------------------
 
@@ -84,7 +85,7 @@ Decoders:
 CW: Best at 500–800 Hz. Align with waterfall red bars.
 RTTY: Align mark/space with waterfall bars. Mark should be set to 500Hz. While decoding use encoder for fine tuning.
 SSTV: Supports Martin & Scottie. Autodetect is based on sync interval and may fail.
-Weatherfax: Experimental. IOC567 format only. Sync unstable.
+Weatherfax: Experimental. IOC567 format only. Sync unstable. 
 
 SSTV files:
 Saves SSTV images to SD card (BMP) or LittleFS (.raw or .bmp).
