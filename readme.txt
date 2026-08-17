@@ -16,16 +16,16 @@ Receiver works offline, but WiFi enables extra features.
 
 Hardware "special" requirements:
 1. Audio Input on GPIO32:
-Required for waterfall, decoders, audio DSP, WiFi remote, KiwiSDR:
+Required for waterfall, decoders, audio DSP, WiFi remote:
 Needs 1–2 Vpp signal, centered at 1.65 V.
-Sources: LM386 amplifier or single transistor amplifier (biased at 1.65 V).
+Sources: LM386 amplifier or single transistor amplifier (collector at 1.65 V).
 Add 5–10 nF capacitor from GPIO32 to GND to reduce aliasing.
 
-2. Audio Feedback (GPIO26, DAC)
+2. Audio Feedback (GPIO26 to audio input)
 Used for all features that feed digital audio into the audio path. 
 Connect GPIO26 through a 10 nF capacitor + resistor in series to audio amp input.
-Resistor value sets volume and value depends on the audio amplifier. Good starting points are 100K for high impedance audio input
-and 10K for low impendace.
+Resistor value sets volume and value depends on the audio amplifier. Resistor needs to be figured out. 
+Good starting points are 100K for high impedance audio input and 10K for low impedance.
 
 3. SD Card
 Connect to SPI bus (shared with display).
@@ -50,6 +50,7 @@ MemoInfo.csv -> memory entries
 eibi.lst -> EiBi station list
 image.img -> last downloaded image
 kiwisdr.url -> KiwiSDR server URLs
+iradio.url -> Internet radio server URLs
 memory.csv -> station list (PicoRX compatible)
 splash.jpg -> boot image
 *.raw -> saved SSTV images (raw format)
@@ -70,10 +71,12 @@ Push again = exit fine tune.
 
 WiFi Sync: Syncs browser with the ESP32 file system. Download, edit, re‑upload config files, station lists and SSTV images.
 
+
+
 WiFi interface: Allows to listen remotely. For best sound:
 Adjust receiver volume first (avoid clipping).
 Fine‑tune volume then with WiFi interface slider.
-This feature requires full ESP32 processing power → other functions may lag.
+This feature requires full ESP32 processing power -> other functions may lag.
 Exit via Freq -> Boot button.
 
 Decoders:
@@ -86,11 +89,15 @@ Save SSTV images to SD card (BMP) or LittleFS (.raw or .bmp).
 Limited storage: ~12 raw or 4 BMP files. Oldest file gets overwritten when full.
 
 
-KiwiSDR: Connects to 1 of 10  selectable KiwiSDR servers on the current frequency/mode. KiwiSDR servers can be changed by modifying the configfile kiwisdr.url.
-For SSB and CW the SI4732 frequency needs to be precise (Config -> Crystal Offset), otherwise it will cause a frequency offset with the Kiwi server.
-Encoder tuning works, but with a huge delay (10 seconds). KiwiSDR client requires full ESP32 processing power, so no other functions (except encoder tuning)
-are available while listening to a KiwiSDR.
+KiwiSDR: Connects to 1 of 10 selectable KiwiSDR servers using the current frequency/mode. KiwiSDR servers can be changed by modifying the config file kiwisdr.url.
+For SSB and CW the SI4732 frequency needs to be precisely adjusted (Config -> Crystal Offset), otherwise it will cause a frequency offset with the Kiwi server.
+The encoder can now be used for tuning the client. The first changes will be slow (several seconds) until the internal audio buffer has been adjusted. 
+Later changes will take around 1 second.
+DLY- and DLY+ can be used if the audio drops, or the audio pitch is too high/low. The correct value depends on the hardware used and should be around 70.
+KiwiSDR may not function on every hardware, the streaming and decoding chain pushes the ES32 to it's limits and will fail if for example WiFi is weak.   
 
+Internet radio: Experimental. Servers can be changed by modifying the config file iradio.url. Currently only mp3 encoding is supported. Faster streams (>192Kbit)
+will most likely stutter.
 
 User Interface
 Indicators: Tap indicators below S‑Meter to change values.
