@@ -85,7 +85,7 @@ Exit via Freq -> Boot button.
 
 Decoders:
 CW: Best at 500–800 Hz. Align with waterfall red bars.
-RTTY: Align mark/space with waterfall bars. Mark should be set to 500Hz. While decoding use encoder for fine tuning.
+RTTY: Align mark/space with waterfall bars. Mark should be set to 2125Hz. While decoding use encoder for fine tuning.
 SSTV: Supports Martin & Scottie. Autodetect is based on sync interval and may fail.
 Weatherfax: Experimental. IOC567 format only. Sync unstable.
 
