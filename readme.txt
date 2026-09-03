@@ -1,3 +1,4 @@
+ 
 This firmware is designed for SI473x + ESP32 + ILI9341 receivers.
 The firmware will run on diy receivers that follow the "common" wiring scheme that has been published several times.
 It will also run on some versions of the ATS25 receiver. "Air" version of the ATS25 are not supported.
@@ -10,7 +11,7 @@ Getting Started:
 Upload the .bin file to the ESP32.
 Configure display and touchscreen.
 If encoder direction is wrong, adjust in Config menu.
-If SI5351 is used to generate 32768Hz clock, enable in Config menu.
+
 Configure WiFi:
 Menu → More → Config → WiFi Cred.
 Receiver works offline, but WiFi needed for features.
@@ -95,23 +96,39 @@ Limited storage: ~12 raw or 4 BMP files. Oldest file gets overwritten when full.
 
 
 KiwiSDR: Connects to 1 of 10 selectable KiwiSDR servers using the current frequency/mode. KiwiSDR servers can be changed by modifying the config file kiwisdr.url.
-Not all will work since this client uses a rather primitive implementation of the (undisclosed) communication protocol between server and client.
+Not all will work since this client uses a rather primitive implementation of the (undisclosed) communication protocol between server and client. Also, servers may change
+url or no longer be available.
 To change a server, check http://rx.linkfanel.net/ and http://kiwisdr.com/public/. Try the new server first in a browser and
 use a server that does not use cloudflare or similar bot protector.
 For SSB and CW the SI4732 frequency needs to be precisely adjusted (Config -> Crystal Offset), otherwise it will cause a frequency offset with the Kiwi server.
 The client can now be tuned with the encoder. The first tuning changes will be slow (several seconds) until the internal audio buffer has been adjusted.
 Later changes will take around 1 second. Not all servers allow tuning with the encoder.
-DLY- and DLY+ can be used if the audio drops, or the audio pitch is too high/low. The correct value depends on the individual hardware and should be around 70 (indicator
-on the top right). The client may not function on every hardware, the streaming and decoding chain pushes the ES32 to it's limits.
+
+DLY- and DLY+ may need to be adjusted so that the green number above the NBFM button shows a value of 171 or slightly below. Values > 171 will cause dropouts.
+Values lower than 171 will change pitch.
+The client may not function on every hardware, the streaming and decoding chain pushes the ES32 to it's limits.
 
 
 Internet radio: Experimental. Servers can be changed by modifying the config file iradio.url. Currently only mp3 encoding is supported. Faster streams (>192Kbit)
 will most likely stutter.
 
 
+FlightRadar:
+
+FlightRadar uses an external downconverter to receive airband frequencies and displays their position on the screen. Flights can be displayed without the downconverter.
+The converter's crystal frequency needs to be set in the config menu. Valid entries are between 99 and 120MHz. 10 hotkeys for air frequencies are available.
+To configure their frequencies, download the file atcfreqs.lst from the receiver, edit the file (description in the file) and re-upload it to the receiver.
+The squelch should set to slightly closed before using the FlightRadar module.
+
+Location: Configure the location you want to see on the radar screen's center in the Config Menu. Tap on Lat/Lon and enter coordinates. For demo purposes, the Lat/Lon of London has been entered. The radar's range can be zoomed between 3 and 50km.The radar will show the aircraft's  call sign and it's flight trail. Trails will accumulate, to remove them, tap on Clear Trails. To see aircraft details, tap on the aircraft triangle (good touchscreen calibration is needed). Tapping on "Mode" will put the radar in map mode and it will display the aircraft on an underlaying map.
+These maps must be manually created and loaded onto the LittleFS. 5 maps, one for each zoom level, are required. They must be 200*200 pixels wide, jpg format and have the location in it's center. They must cover exactly the radar's range, for example the map for 50km radius (50000.jpg) must show a 100x100km square. Contact me if you want to know how to create these maps.
+
+
+
 User Interface
 Indicators: Tap indicators below S‑Meter to change values.
 Frequency digits: Tap upper/lower halves to change frequency. Requires precise touch calibration.
 Tap left or right of "Step:..." to step frequency up/down.
+
 
 
