@@ -115,7 +115,7 @@ will most likely stutter.
 
 FlightRadar:
 
-FlightRadar uses an external downconverter to receive airband frequencies and displays the aircraft position on the screen. Aircrafta can be displayed without the downconverter.
+FlightRadar used an external downconverter to receive airband frequencies and displays the aircraft position on the screen. Aircrafta can be displayed without the downconverter.
 The converter's crystal frequency needs to be set in the config menu. Valid entries are between 99 and 120MHz. 10 hotkeys for air frequencies are available.
 To configure their frequencies, download the file atcfreqs.lst from the receiver, edit the file (description in the file) and re-upload it to the receiver.
 The squelch should set to slightly closed before using the FlightRadar module.
