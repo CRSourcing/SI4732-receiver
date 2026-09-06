@@ -115,13 +115,15 @@ will most likely stutter.
 
 FlightRadar:
 
-FlightRadar uses an external downconverter to receive airband frequencies and displays their position on the screen. Flights can be displayed without the downconverter.
+FlightRadar uses an external downconverter to receive airband frequencies and displays the aircraft position on the screen. Aircrafta can be displayed without the downconverter.
 The converter's crystal frequency needs to be set in the config menu. Valid entries are between 99 and 120MHz. 10 hotkeys for air frequencies are available.
 To configure their frequencies, download the file atcfreqs.lst from the receiver, edit the file (description in the file) and re-upload it to the receiver.
 The squelch should set to slightly closed before using the FlightRadar module.
 
-Location: Configure the location you want to see on the radar screen's center in the Config Menu. Tap on Lat/Lon and enter coordinates. For demo purposes, the Lat/Lon of London has been entered. The radar's range can be zoomed between 3 and 50km.The radar will show the aircraft's  call sign and it's flight trail. Trails will accumulate, to remove them, tap on Clear Trails. To see aircraft details, tap on the aircraft triangle (good touchscreen calibration is needed). Tapping on "Mode" will put the radar in map mode and it will display the aircraft on an underlaying map.
+Location: Configure the location you want to see on the radar screen's center in the Config Menu. Tap on Lat/Lon and enter coordinates. For demo purposes, the Lat/Lon of London has been entered. The radar's range can be zoomed between 3 and 50km.The radar will show the aircraft's  call sign and it's flight trail. Trails will accumulate, to remove them, tap on Clear Trails. To see aircraft details, tap on the aircraft triangle (good touchscreen calibration is needed). Tapping on "Map" will put the radar in map mode and it will display the aircraft on an underlaying map, if a map was uploaded to LittleFS.
+
 These maps must be manually created and loaded onto the LittleFS. 5 maps, one for each zoom level, are required. They must be 200*200 pixels wide, jpg format and have the location in it's center. They must cover exactly the radar's range, for example the map for 50km radius (50000.jpg) must show a 100x100km square. Contact me if you want to know how to create these maps.
+Scan: To scan through the 10 aircraft frequencies, drag the white squelch bar until the squelch closes and tap on the "Scan" button. 
 
 
 
