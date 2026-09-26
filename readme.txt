@@ -1,8 +1,8 @@
- 
-This firmware is designed for SI473x + ESP32 + ILI9341 receivers.
+
+This firmware is designed for SI473x + ESP32 eceivers with an ILI9341 or ST7789 display. 
 The firmware will run on diy receivers that follow the "common" wiring scheme that has been published several times.
 It will also run on some versions of the ATS25 receiver. "Air" version of the ATS25 are not supported.
-CW, RTTY, SSTV and WEFAX decoders are included. A web interface is also included.
+CW, RTTY, SSTV WEFAX and FT8 decoders are included. A web interface is also included.
 A KiwiSDR client lets you select a KiwiSDR and use it as a "radio within the radio".
 
 ------------------------------------------------------------------------------------------
@@ -75,8 +75,7 @@ Push = fine tune mode.
 Push again = exit fine tune.
 
 
-WiFi Sync: Syncs browser with the ESP32 file system. Download, edit, re‑upload config files, station lists and SSTV images.
-
+WiFi Sync: Syncs browser with the ESP32 file system. Used to download, edit, re‑upload config files, station lists and SSTV images.
 
 WiFi interface: Allows to listen remotely. For best sound:
 Adjust receiver volume first (avoid clipping).
@@ -115,7 +114,9 @@ will most likely stutter.
 
 FlightRadar:
 
-FlightRadar used an external downconverter to receive airband frequencies and displays the aircraft position on the screen. Aircrafta can be displayed without the downconverter.
+Needs latitude and longitude set to current location!
+
+FlightRadar used an external downconverter to receive airband frequencies and displays the aircraft position on the screen. Aircrafts can be displayed without the downconverter.
 The converter's crystal frequency needs to be set in the config menu. Valid entries are between 99 and 120MHz. 10 hotkeys for air frequencies are available.
 To configure their frequencies, download the file atcfreqs.lst from the receiver, edit the file (description in the file) and re-upload it to the receiver.
 The squelch should set to slightly closed before using the FlightRadar module.
@@ -123,14 +124,28 @@ The squelch should set to slightly closed before using the FlightRadar module.
 Location: Configure the location you want to see on the radar screen's center in the Config Menu. Tap on Lat/Lon and enter coordinates. For demo purposes, the Lat/Lon of London has been entered. The radar's range can be zoomed between 3 and 50km.The radar will show the aircraft's  call sign and it's flight trail. Trails will accumulate, to remove them, tap on Clear Trails. To see aircraft details, tap on the aircraft triangle (good touchscreen calibration is needed). Tapping on "Map" will put the radar in map mode and it will display the aircraft on an underlaying map, if a map was uploaded to LittleFS.
 
 These maps must be manually created and loaded onto the LittleFS. 5 maps, one for each zoom level, are required. They must be 200*200 pixels wide, jpg format and have the location in it's center. They must cover exactly the radar's range, for example the map for 50km radius (50000.jpg) must show a 100x100km square. Contact me if you want to know how to create these maps.
-Scan: To scan through the 10 aircraft frequencies, drag the white squelch bar until the squelch closes and tap on the "Scan" button. 
+Scan: To scan through the 10 aircraft frequencies, drag the white squelch bar until the squelch closes and tap on the "Scan" button.
+
+
+FT8 Decoder:
+
+FT8 decoder needs the ESP32 RTC synchronized. If the clock is not set, it will try to connect to a time server. It will not run properly if it can't connect to
+the timer server, so internet access is required.
+Additionally for distance calculations the latitude and longitude to be set (Config Menu).
+
+Messages are color coded:
+White if no QTH locator is available
+Cyan if it's a CQ call.
+Green to magenta, depending on distance, if a QTH locator is available.
+
+Main Menu: Will display band buttons, waterfall and the last 15 messages. If a QTH locator is included, it will display the distance from the transmitter.
+"COUN" - Country Menu: Will rank countries by the amount of messages. Max. 60 countries can be displayed.
+Stats Menu: Will display the last 10 messages. Will display distance, country and overall statistics.
+Map Menu: Will display a world map. Stations with QTH locator will be shown as a red dot on the map. The last 10 messages will be displayed with the senders country name.
 
 
 
-User Interface
+General User Interface
 Indicators: Tap indicators below S‑Meter to change values.
 Frequency digits: Tap upper/lower halves to change frequency. Requires precise touch calibration.
 Tap left or right of "Step:..." to step frequency up/down.
-
-
-
