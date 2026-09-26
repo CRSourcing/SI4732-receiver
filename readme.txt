@@ -130,7 +130,7 @@ Scan: To scan through the 10 aircraft frequencies, drag the white squelch bar un
 FT8 Decoder:
 
 FT8 decoder needs the ESP32 RTC synchronized. If the clock is not set, it will try to connect to a time server. It will not run properly if it can't connect to
-the timer server, so internet access is required.
+the timer server, so internet access is required. Please allow some time if pages do not immediately show signals. The display gets refreshed every 15 seconds. 
 Additionally for distance calculations the latitude and longitude to be set (Config Menu).
 
 Messages are color coded:
