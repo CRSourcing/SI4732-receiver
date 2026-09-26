@@ -4,3 +4,4 @@ The firmware will run on diy receivers that follow the "common" wiring scheme th
 CW, RTTY, SSTV, WEFAX and FT8 decoders are included. A web interface is included. A KiwiSDR client lets you select a KiwiSDR and listen to the current frequency.
 Please note that this firmware is free for personal use, but not commercial use. 
 ![Alt text](pics/20260717_082457.jpg)
+![Alt text](pics/20260922_055322.jpg)
