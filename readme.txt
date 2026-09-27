@@ -143,7 +143,7 @@ Main Menu: Will display band buttons, waterfall and the last 15 messages. If a Q
 "COUN" - Country Menu: Will rank countries by the amount of messages. Max. 60 countries can be displayed.
 Stats Menu: Will display the last 10 messages. Will display distance, country and overall statistics.
 Map Menu: Will display a world map. Stations with QTH locator will be shown as a red dot on the map. The last 10 messages will be displayed with the senders country name.
-
+Waterfall: Tap on waterfall to stop it,  if it causes interference. 
 
 
 General User Interface
