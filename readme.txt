@@ -127,9 +127,9 @@ These maps must be manually created and loaded onto the LittleFS. 5 maps, one fo
 Scan: To scan through the 10 aircraft frequencies, drag the white squelch bar until the squelch closes and tap on the "Scan" button.
 
 
-FT8 Decoder:
+FT4/8 Decoder:
 
-FT8 decoder needs the ESP32 RTC synchronized. If the clock is not set, it will try to connect to a time server. If it can't retrieve time from the server, it will
+FT4/8 decoder needs the ESP32 RTC synchronized. If the clock is not set, it will try to connect to a time server. If it can't retrieve time from the server, it will
 start, but needs to get manually synchronized. In that case press the "SYNC" button and release it when the majority of transmissions audibly end. 
 Please allow some time if pages do not immediately show signals. The display gets refreshed every 15 seconds. 
 Additionally for distance calculations the latitude and longitude to be set (Config Menu).
