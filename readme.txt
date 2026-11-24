@@ -68,7 +68,8 @@ splash.jpg -> boot image
 Software hints:
 
 SI5351 support: Generates 32.768 kHz on CLK0 (enable in Config).
-GPO1 support: HIGH in AM, LOW in FM (enable in Config).
+VHF mode: "Tap Mode" ->"VHF ON".
+Airband converter: Configure Airband offset in the Config menu. Then tap "More" -> Airband Conv.    
 
 Encoder:
 Push = fine tune mode.
